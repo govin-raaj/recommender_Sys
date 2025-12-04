@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from fastapi import FastAPI
 from app.backend.llm import recommend_gadget
 from fastapi.middleware.cors import CORSMiddleware
