@@ -1,0 +1,5 @@
+fastapi
+mangum
+langchain-core
+langchain-groq
+uvicorn

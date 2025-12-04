@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gadget Recommender</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Gadget Recommender</h2>
+
+        <input id="productInput" type="text" placeholder="Enter gadget name (e.g., iPhone 14)" />
+
+        <button onclick="recommend()">Get Recommendations</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function recommend() {
+            const item = document.getElementById("productInput").value;
+            if (!item) {
+                alert("Please enter a product name!");
+                return;
+            }
+
+            document.getElementById("result").innerText = "Loading...";
+
+            try {
+                const response = await fetch("/api/recommend", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ item: item })
+})
+
+
+                const data = await response.json();
+                document.getElementById("result").innerText = data.recommendations;
+            } catch (err) {
+                document.getElementById("result").innerText = "Error: " + err;
+            }
+        }
+    </script>
+</body>
+</html>

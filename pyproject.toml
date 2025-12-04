@@ -1,0 +1,18 @@
+[project]
+name = "recommender-sys"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "app>=0.0.1",
+    "fastapi>=0.123.7",
+    "ipynb>=0.5.1",
+    "langchain>=1.1.0",
+    "langchain-community>=0.4.1",
+    "langchain-core>=1.1.0",
+    "langchain-groq>=1.1.0",
+    "langgraph>=1.0.4",
+    "mangum>=0.19.0",
+    "uvicorn>=0.38.0",
+]
