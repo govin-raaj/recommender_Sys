@@ -85,7 +85,7 @@
             document.getElementById("result").innerText = "Loading...";
 
             try {
-                const response = await fetch("/api/main", {
+                const response = await fetch("/api/main.py", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ item: item })
